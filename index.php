@@ -44,9 +44,12 @@ curl_setopt($cURLConnection, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($cURLConnection, CURLOPT_POSTFIELDS, json_encode($postRequest));
 curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
 
+
+
 $apiResponse = curl_exec($cURLConnection);
 curl_close($cURLConnection);
 
+echo $apiResponse;
 
 
  ?>
