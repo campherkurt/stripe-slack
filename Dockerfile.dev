@@ -1,4 +1,7 @@
 FROM php:7.4-cli
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
+
+CMD ["chmod", "+x", "composer-install.sh"]
+CMD ["sh", "composer-install.sh"]
 CMD [ "php", "./index.php" ]
