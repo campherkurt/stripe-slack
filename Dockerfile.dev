@@ -1,7 +1,9 @@
 FROM php:7.4-cli
+
+# Install Composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 
-CMD ["chmod", "+x", "composer-install.sh"]
-CMD ["sh", "composer-install.sh"]
 CMD [ "php", "./index.php" ]
