@@ -1,5 +1,24 @@
-<<?php
+<?php
+require_once('vendor/autoload.php');
 
+// Set your secret key. Remember to switch to your live secret key in production!
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+
+echo "stripe set up";
+\Stripe\Stripe::setApiKey('sk_test_51Hb9FbH2zo4vK60bB7lQmLoLgjoNfrUowdlzMvEtVUoIMgrJGoEp5bwm3TDslcYDrhm4paFyQUtV2V656Ounu7W500GcmFzXMS');
+
+
+echo "payment intent";
+$stripeResponse =  \Stripe\PaymentIntent::create([
+  'amount' => 1000,
+  'currency' => 'usd',
+  'payment_method_types' => ['card'],
+  'receipt_email' => 'jenny.rosen@example.com',
+]);
+
+
+
+echo "Starting the script";
 $dailyTotal   = 4;
 $randomGreeting = array(
   "Baller ALERT!!!! :soccer::soccer::soccer: \r\n",
@@ -29,13 +48,13 @@ $saleEventURL = "\r\n\r\n http://test.com";
 
 
 $postRequest = array(
-    "channel" => "<channel ID goes here>",
+    "channel" => "<<Channel ID goes here>>",
     "text" => ":comet::comet::comet::comet::comet::comet::comet::comet: \r\n\r\n " . $greeting . $funnyQuote . $saleEventURL
 );
 
 $headers =  array(
     'Content-type: application/json; charset=UTF-8',
-    'Authorization: Bearer <<SECURITY TOKEN GOES HERE>>'
+    'Authorization: Bearer <<Token goes here>>'
 );
 
 
