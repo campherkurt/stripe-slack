@@ -1,13 +1,41 @@
 <<?php
 
+$dailyTotal   = 4;
+$randomGreeting = array(
+  "Baller ALERT!!!! :soccer::soccer::soccer: \r\n",
+  "They see me, they hatin :rage::rage::rage:",
+  "This is what we do! :rocket::rocket::rocket:",
+  "I love it when you call me BIG POPPA :champagne::champagne::champagne:",
+  "We got's another :one:  Major :key: ALERT!",
+  "They can't stop us :racing_car::police_car:",
+  "Kobe! :basketball::wastebasket: :basketball::wastebasket: :basketball::wastebasket:",
+  "Goooooooooooooooal!!!!! :soccer::goal_net:",
+  "Why is it so easy??? :man-shrugging::man-shrugging::man-shrugging::man-shrugging::man-shrugging:",
+  "We just getting started! :runner::runner::runner:"
+);
+$randomFunnyQuote = array(
+  "\r\nGoodness gracious, y'all have ".$dailyTotal." for the day. :money_with_wings::money_with_wings::money_with_wings:",
+  "\r\nYou just hit " . $dailyTotal . ",bro :beach_with_umbrella::beach_with_umbrella::beach_with_umbrella:",
+  "\r\nGood job, we on " . $dailyTotal . "! :fire::fire::fire:",
+  "\r\nHell yeah! We hit " . $dailyTotal . "! Keep 'em coming playa! :trophy::trophy::trophy:"
+);
+
+$quoteNumber = rand(0,9);
+
+$greeting     = $randomGreeting[rand(0,9)];
+$funnyQuote   = $randomFunnyQuote[rand(0,3)];
+$saleEventURL = "\r\n\r\n http://test.com";
+
+
+
 $postRequest = array(
-    'channel' => '<Add channel ID here>',
-    'text' => 'hello world :tada:'
+    "channel" => "<channel ID goes here>",
+    "text" => ":comet::comet::comet::comet::comet::comet::comet::comet: \r\n\r\n " . $greeting . $funnyQuote . $saleEventURL
 );
 
 $headers =  array(
     'Content-type: application/json; charset=UTF-8',
-    'Authorization: Bearer <Add OAuth token here'
+    'Authorization: Bearer <<SECURITY TOKEN GOES HERE>>'
 );
 
 
@@ -19,10 +47,6 @@ curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
 $apiResponse = curl_exec($cURLConnection);
 curl_close($cURLConnection);
 
-// $apiResponse - available data from the API request
-//$jsonArrayResponse = json_decode($apiResponse);
 
-echo 'Response found: <br/>';
-echo $apiResponse;
 
  ?>
