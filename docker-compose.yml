@@ -1,0 +1,38 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.dev
+    image: php:7.2-fpm
+    container_name: php
+    tty: true
+    environment:
+      SERVICE_NAME: php
+    working_dir: /var/www
+    volumes:
+       - ./:/var/www
+       - ./docker/php.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    depends_on:
+      - php
+    tty: true
+    ports:
+      - "8080:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./docker/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
