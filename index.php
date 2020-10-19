@@ -1,11 +1,13 @@
 <?php
+echo ">>>>>>>>>>> Hello World";
+
 require_once('vendor/autoload.php');
 
 // Set your secret key. Remember to switch to your live secret key in production!
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 
 echo "stripe set up";
-\Stripe\Stripe::setApiKey('sk_test_51Hb9FbH2zo4vK60bB7lQmLoLgjoNfrUowdlzMvEtVUoIMgrJGoEp5bwm3TDslcYDrhm4paFyQUtV2V656Ounu7W500GcmFzXMS');
+\Stripe\Stripe::setApiKey('API KEY GOES HERE');
 
 
 echo "payment intent";
@@ -48,13 +50,13 @@ $saleEventURL = "\r\n\r\n http://test.com";
 
 
 $postRequest = array(
-    "channel" => "<<Channel ID goes here>>",
+    "channel" => "CHANNEL ID GOES HERE",
     "text" => ":comet::comet::comet::comet::comet::comet::comet::comet: \r\n\r\n " . $greeting . $funnyQuote . $saleEventURL
 );
 
 $headers =  array(
     'Content-type: application/json; charset=UTF-8',
-    'Authorization: Bearer <<Token goes here>>'
+    'Authorization: Bearer TOKEN GOES HERE'
 );
 
 
